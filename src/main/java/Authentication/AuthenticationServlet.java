@@ -1,4 +1,4 @@
-package com.Authentication;
+package Authentication;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,11 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Authentication.queries.AuthenticationQueries;
+import Authentication.queries.AuthenticationQueries;
 
 import global.CurrentUser;
-
-import java.util.*;
 /**
  * Servlet implementation class AuthenticationServlet
  */

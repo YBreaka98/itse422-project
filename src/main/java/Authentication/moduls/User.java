@@ -1,9 +1,9 @@
-package com.Authentication.moduls;
+package Authentication.moduls;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import com.Authentication.moduls.enums.UserType;
+import Authentication.moduls.enums.UserType;
 import java.io.Serializable;
 
 public class User implements Serializable {

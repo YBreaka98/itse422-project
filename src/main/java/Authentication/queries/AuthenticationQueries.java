@@ -1,10 +1,10 @@
-package com.Authentication.queries;
+package Authentication.queries;
 
 import java.sql.*;
 import java.time.Instant;
 
-import com.Authentication.moduls.User;
-import com.Authentication.moduls.enums.UserType;
+import Authentication.moduls.User;
+import Authentication.moduls.enums.UserType;
 
 import global.CurrentUser;
 import global.SqlConnection;

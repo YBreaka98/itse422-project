@@ -1,12 +1,12 @@
-package com.UserManagement;
+package Main.UserManagement;
 
 import java.sql.*;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.Authentication.moduls.User;
-import com.Authentication.moduls.enums.UserType;
+import Authentication.moduls.User;
+import Authentication.moduls.enums.UserType;
 
 import global.SqlConnection;
 
