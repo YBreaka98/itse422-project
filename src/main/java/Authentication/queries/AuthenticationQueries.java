@@ -24,15 +24,4 @@ public class AuthenticationQueries {
 		return false;
 	}
 
-	public void addNewUser(String username, String password, UserType role) throws SQLException {
-		String query = "INSERT INTO `users`(`username`, `password`, `role`, `created_at`, `updated_at`) VALUES (`?,?,?,?,?`)";
-		PreparedStatement prepared = con.prepareStatement(query);
-		prepared.setString(1, username);
-		prepared.setString(2, password);
-		prepared.setString(3, role.toString());
-		prepared.setTimestamp(4, Timestamp.from(Instant.now()));
-		prepared.setTimestamp(5, Timestamp.from(Instant.now()));
-		prepared.executeUpdate();
-	}
-
 }

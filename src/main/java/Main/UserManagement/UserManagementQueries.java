@@ -33,14 +33,25 @@ public class UserManagementQueries {
 			return null;
 	}
 
-	public void updateUser(String username, String password, UserType role, int id) throws SQLException {
+	public void addNewUser(User u) throws SQLException {
+		String query = "INSERT INTO `users`(`username`, `password`, `role`, `created_at`, `updated_at`) VALUES (`?,?,?,?,?`)";
+		PreparedStatement prepared = con.prepareStatement(query);
+		prepared.setString(1, u.getUserName());
+		prepared.setString(2, u.getPassword());
+		prepared.setString(3, u.getRole().toString());
+		prepared.setTimestamp(4, Timestamp.from(Instant.now()));
+		prepared.setTimestamp(5, Timestamp.from(Instant.now()));
+		prepared.executeUpdate();
+	}
+
+	public void updateUser(User u) throws SQLException {
 		String query = "UPDATE `users` SET `username`='?',`password`='?',`role`='?',`updated_at`='?' WHERE `id`='?'";
 		PreparedStatement prepared = con.prepareStatement(query);
-		prepared.setString(1, username);
-		prepared.setString(2, password);
-		prepared.setString(3, role.toString());
+		prepared.setString(1, u.getUserName());
+		prepared.setString(2, u.getPassword());
+		prepared.setString(3, u.getRole().toString());
 		prepared.setTimestamp(4, Timestamp.from(Instant.now()));
-		prepared.setInt(5, id);
+		prepared.setInt(5, u.getId());
 		prepared.executeUpdate();
 	}
 

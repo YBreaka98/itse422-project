@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class Flight implements Serializable {
 	/**
 	 * 
@@ -44,6 +46,23 @@ public class Flight implements Serializable {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+	
+	// used to make an object from the UI in the fromUI function
+	public Flight(String airlineCode, int flightNumber, String departureLocation, Date departureDayOfTheWeek,
+			String arrivalLocation, Date arrivalDayOfTheWeek, double businessCost, double economyCost,
+			int businessSeats, int economySeats, String status) {
+		this.airlineCode = airlineCode;
+		this.flightNumber = flightNumber;
+		this.departureLocation = departureLocation;
+		this.departureDayOfTheWeek = departureDayOfTheWeek;
+		this.arrivalLocation = arrivalLocation;
+		this.arrivalDayOfTheWeek = arrivalDayOfTheWeek;
+		this.businessCost = businessCost;
+		this.economyCost = economyCost;
+		this.businessSeats = businessSeats;
+		this.economySeats = economySeats;
+		this.status = status;
+	}
 
 	public static Flight fromDB(ResultSet r) throws SQLException {
 		return new Flight(r.getInt("id"), r.getString("airline_code"), r.getInt("flight_number"),
@@ -51,6 +70,16 @@ public class Flight implements Serializable {
 				r.getString("arrival_location"), r.getDate("arrival_day_of_the_week"), r.getDouble("business_cost"),
 				r.getDouble("economy_cost"), r.getInt("business_seats"), r.getInt("economy_seats"),
 				r.getString("status"), r.getTimestamp("created_at"), r.getTimestamp("updated_at"));
+	}
+
+	public static Flight fromUI(HttpServletRequest request) {
+		return new Flight((String) request.getAttribute("airline_code"),
+				(Integer) request.getAttribute("flight_number"), (String) request.getAttribute("departure_location"),
+				(Date) request.getAttribute("departure_day_of_the_week"),
+				(String) request.getAttribute("arrival_location"),
+				(Date) request.getAttribute("arrival_day_of_the_week"), (Double) request.getAttribute("business_cost"),
+				(Double) request.getAttribute("economy_cost"), (Integer) request.getAttribute("business_seats"),
+				(Integer) request.getAttribute("economy_seats"), (String) request.getAttribute("status"));
 	}
 
 	public int getId() {

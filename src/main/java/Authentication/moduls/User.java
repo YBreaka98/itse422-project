@@ -3,6 +3,9 @@ package Authentication.moduls;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+
+import javax.servlet.http.HttpServletRequest;
+
 import Authentication.moduls.enums.UserType;
 import java.io.Serializable;
 
@@ -75,8 +78,20 @@ public class User implements Serializable {
 		this.updatedAt = updatedAt;
 	}
 
+	// used to make an object from the UI in the fromUI function
+	public User(String userName, String password, UserType role) {
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
+	}
+
 	public static User fromDB(ResultSet r) throws SQLException {
 		return new User(r.getInt("id"), r.getString("username"), r.getString("password"),
 				UserType.valueOf(r.getString("role")), r.getTimestamp("created_at"), r.getTimestamp("updated_at"));
+	}
+
+	public static User fromUI(HttpServletRequest request) {
+		return new User((String) request.getAttribute("username"), (String) request.getAttribute("password"),
+				UserType.valueOf((String) request.getAttribute("role")));
 	}
 }
