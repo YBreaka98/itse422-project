@@ -4,17 +4,36 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/styles/login.css" />
+
+<title>Booking System</title>
 </head>
 <body>
-	<h1>welcome to JSP</h1>
-	<form action="AuthenticationServlet">
-	<label>first name:</label>
-		<input type="text" name="username"/><br>
-		<label>last name:</label>
-		<input type="text" name="password" /><br>
-		<label>phone:</label> 
-		<input type="submit" value="send" />
-	</form>
+	<div class="wrapper fadeInDown">
+		<div id="formContent">
+			<!-- Tabs Titles -->
+			<h2 class="active">Sign In</h2>
+			<!-- Icon -->
+			<!-- <div class="fadeIn first">
+				<img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon"
+					alt="User Icon" />
+			</div> -->
+
+			<!-- Login Form -->
+			<form action="AuthenticationServlet">
+				<input type="text" id="login" class="fadeIn second" name="username"
+					placeholder="login"> <input type="text" id="password"
+					class="fadeIn third" name="password" placeholder="password">
+				<input type="submit" class="fadeIn fourth" value="send">
+			</form>
+
+			<!-- Remind Password -->
+			<div id="formFooter">
+				<a class="underlineHover" href="#">Forgot Password?</a>
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>

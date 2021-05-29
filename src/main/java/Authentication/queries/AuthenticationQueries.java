@@ -10,7 +10,11 @@ import global.CurrentUser;
 import global.SqlConnection;
 
 public class AuthenticationQueries {
-	Connection con = SqlConnection.connect();
+	Connection con = null;
+
+	public AuthenticationQueries() {
+		con = SqlConnection.connect();
+	}
 
 	public boolean signIn(String username, String password) throws SQLException {
 		PreparedStatement prepared = con.prepareStatement("select * from users where username=? and password=?");

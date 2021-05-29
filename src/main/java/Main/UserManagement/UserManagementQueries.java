@@ -11,7 +11,11 @@ import Authentication.moduls.enums.UserType;
 import global.SqlConnection;
 
 public class UserManagementQueries {
-	Connection con = SqlConnection.connect();
+	Connection con = null;
+
+	public UserManagementQueries() {
+		con = SqlConnection.connect();
+	}
 
 	public List<User> getUsers() throws SQLException {
 		List<User> users = new ArrayList<>();
